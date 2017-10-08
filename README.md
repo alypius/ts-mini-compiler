@@ -1,0 +1,1 @@
+A recursive-descent compiler for a subset of TypeScript. Currently parses simple javascript containing type annotations and emits with annotations removed.  Type checking coming soon.

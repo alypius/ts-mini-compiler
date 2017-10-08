@@ -1,0 +1,9 @@
+{
+    "extends": "../tsconfig-base",
+    "compilerOptions": {
+        "declaration": true,
+        "module": "amd",
+        "outFile": "../dist/ts-mini-compiler.js",
+        "target": "es5"
+    }
+}

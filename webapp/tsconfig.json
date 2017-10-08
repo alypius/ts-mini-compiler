@@ -1,0 +1,11 @@
+{
+    "extends": "../tsconfig-base",
+    "compilerOptions": {
+        "module": "amd",
+        "outFile": "../dist/webapp.js"
+    },
+    "include": [
+        "../dist/ts-mini-compiler.d.ts",
+        "*.ts"
+    ]
+}

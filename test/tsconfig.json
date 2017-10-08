@@ -1,0 +1,12 @@
+{
+    "extends": "../tsconfig-base",
+    "compilerOptions": {
+    	"module": "amd",
+        "outFile": "../dist/compiler-test.js",
+        "types": ["chai", "mocha"]
+    },
+    "include": [
+        "../dist/ts-mini-compiler.d.ts",
+        "compiler/*.ts"
+    ]
+}
