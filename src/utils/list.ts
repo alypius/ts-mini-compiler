@@ -14,13 +14,16 @@ export function pushList<T>(destination: T[], source: T[]) {
 	});
 }
 
-export function flatMap<T, TResult>(list: T[], fn: (value: T) => TResult[]): TResult[] {
-	const listOfLists = list.map(fn);
-	const result: TResult[] = [];
+export function flatten<T>(listOfLists: T[][]): T[] {
+	const flattened: T[] = [];
 	listOfLists.forEach(it => {
-		pushList(result, it);
-	})
-	return result;
+		pushList(flattened, it);
+	});
+	return flattened;
+}
+
+export function flatMap<T, TResult>(list: T[], fn: (value: T) => TResult[]): TResult[] {
+	return flatten(list.map(fn));
 }
 
 export function find<T>(list: T[], predicate: (value: T) => boolean): IOption<T> {

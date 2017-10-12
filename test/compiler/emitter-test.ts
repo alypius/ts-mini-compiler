@@ -1,7 +1,7 @@
 import { Lexer, Parser, Program, Emitter } from "ts-mini-compiler";
 import { assert } from "chai";
 
-describe("Parser", function () {
+describe("Emitter", function () {
     it("Empty program should return empty string", function () {
         assert.equal(Emitter.emit(new Parser.Nodes.Program({ body: [] })), "");
     });

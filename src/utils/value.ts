@@ -1,4 +1,4 @@
-export function isNullOrUndefined<T>(value: T) {
+export function isNullOrUndefined<T>(value: T | null | undefined): value is null | undefined {
     return value === null || value === undefined;
 }
 
@@ -6,6 +6,16 @@ export function hasValue<T>(value: T) {
     return !isNullOrUndefined(value)
         && (typeof value === "string" ? value !== "" : true)
         && (typeof value === "number" ? !isNaN(value) : true);
+}
+
+export function identity<T>(value: T) {
+    return value;
+}
+
+export function thunk<T>(value: T) {
+    return function thunked() {
+        return value;
+    };
 }
 
 export function createMemoizeSingleParameter<TInput>(toHash: (input: TInput) => string) {

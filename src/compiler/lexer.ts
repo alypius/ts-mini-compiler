@@ -102,11 +102,18 @@ function matchKnownRegExp(str: string, pos: number): IOption<[Token, string]> {
 	));
 }
 
-export interface ILexeme<T extends Token> {
+export interface IPosition {
 	lineNum: number;
 	colNum: number;
+}
+
+export interface ILexeme<T extends Token> extends IPosition {
 	token: T;
 	value: string;
+}
+
+export function positionFromLexeme(lexeme: ILexeme<Token>): IPosition {
+	return { lineNum: lexeme.lineNum, colNum: lexeme.colNum };
 }
 
 export function isLexeme<T extends Token>(lexeme: ILexeme<T>): lexeme is ILexeme<T> {
@@ -143,6 +150,17 @@ export namespace Tokens {
 			Token.NumberType,
 			Token.BooleanType
 		], token);
+	}
+
+	export function getTypeOfLiteral(token: Literal): PrimitiveType {
+		if (token === Token.StringLiteral)
+			return Token.StringType;
+		else if (token === Token.DecimalLiteral)
+			return Token.NumberType;
+		else if (token === Token.True || token === Token.False)
+			return Token.BooleanType;
+		else
+			throw new Error("Unknown literal");
 	}
 
 	export type VariableKind = Token.Var | Token.Let | Token.Const;

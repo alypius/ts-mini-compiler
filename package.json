@@ -1,5 +1,5 @@
 {
-  "name": "unnamed-compiler",
+  "name": "ts-mini-compiler",
   "version": "0.0.1",
   "description": "",
   "dependencies": {},
